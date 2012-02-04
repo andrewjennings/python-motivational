@@ -5,7 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Creates inspirational images")
 
-parser.add_argument('--image', '-i', dest='image', help='The path to an inspirational image')
+parser.add_argument('--image', '-i', dest='image', help='The path to an inspirational image', required=True)
 parser.add_argument('--motivation', '-m', dest='motivation', default='Awesome', help='A word that inspires and sums up your image')
 parser.add_argument('--motivation-size', '-ms', dest='motivation_size', type=int, default=50, help='How many pixels tall is your motivational word')
 parser.add_argument('--description', '-d', dest='description', default='Yeah, I totally am', help='Describe your motivations')
