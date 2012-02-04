@@ -7,9 +7,9 @@ parser = argparse.ArgumentParser(description="Creates inspirational images")
 
 parser.add_argument('--image', dest='image', help='The path to an inspirational image')
 parser.add_argument('--heading', dest='heading', default='Awesome', help='A word that inspires and sums up your image')
-parser.add_argument('--heading-size', dest='heading_size', type=int, default=125, help='How many pixels tall is your motivational word')
+parser.add_argument('--heading-size', dest='heading_size', type=int, default=75, help='How many pixels tall is your motivational word')
 parser.add_argument('--description', dest='description', default='Yeah, I totally am', help='Describe your motivations')
-parser.add_argument('--description-size', dest='description_size', type=int, default=75, help='How many pixels tall is your motivational word')
+parser.add_argument('--description-size', dest='description_size', type=int, default=50, help='How many pixels tall is your motivational word')
 
 args = parser.parse_args()
 
@@ -30,7 +30,7 @@ def motivate_image(image, heading, heading_size, description, description_size):
     # Create an image large enough to hold the text and the motivational image
     background_image_width = bordered_image.size[0] # size[0] is the width of an Image
     background_image_height = heading_size[1] + description_size[1] + \
-            text_padding * 3 + bordered_image.size[1]
+            text_padding * 2 + bordered_image.size[1]
     background_image_size = (background_image_width, background_image_height)
 
     background_image = Image.new('RGB', background_image_size, 'black')
