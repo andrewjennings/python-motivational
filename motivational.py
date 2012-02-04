@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from PIL import Image, ImageOps as ops, ImageDraw as draw, ImageFont as font
+from PIL import Image, ImageOps, ImageDraw, ImageFont
 import argparse
 
 
@@ -19,11 +19,11 @@ def motivate_image(image, motivation, motivation_size, description, description_
 
     # Get the image from the args
     motivational_image = Image.open(image)
-    bordered_image = ops.expand(motivational_image, border=border_size, fill=0)
+    bordered_image = ImageOps.expand(motivational_image, border=border_size, fill=0)
 
     # Fun with fonts
-    motivation_font = font.truetype('Glegoo-Regular.ttf', motivation_size)
-    description_font = font.truetype('Glegoo-Regular.ttf', description_size)
+    motivation_font = ImageFont.truetype('Glegoo-Regular.ttf', motivation_size)
+    description_font = ImageFont.truetype('Glegoo-Regular.ttf', description_size)
     motivation_size = motivation_font.getsize(motivation)
     description_size = description_font.getsize(description)
 
@@ -43,7 +43,7 @@ def motivate_image(image, motivation, motivation_size, description, description_
     motivation_bottom_buffer = description_bottom_buffer - text_padding - motivation_size[1]
 
     # Print the text on the image
-    dr = draw.Draw(background_image)
+    dr = ImageDraw.Draw(background_image)
 
     dr.text((motivation_left_buffer, motivation_bottom_buffer),
             motivation,
