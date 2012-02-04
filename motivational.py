@@ -7,9 +7,9 @@ parser = argparse.ArgumentParser(description="Creates inspirational images")
 
 parser.add_argument('--image', '-i', dest='image', help='The path to an inspirational image')
 parser.add_argument('--motivation', '-m', dest='motivation', default='Awesome', help='A word that inspires and sums up your image')
-parser.add_argument('--motivation-size', '-ms', dest='motivation_size', type=int, default=75, help='How many pixels tall is your motivational word')
+parser.add_argument('--motivation-size', '-ms', dest='motivation_size', type=int, default=50, help='How many pixels tall is your motivational word')
 parser.add_argument('--description', '-d', dest='description', default='Yeah, I totally am', help='Describe your motivations')
-parser.add_argument('--description-size', '-ds', dest='description_size', type=int, default=50, help='How many pixels tall is your description')
+parser.add_argument('--description-size', '-ds', dest='description_size', type=int, default=30, help='How many pixels tall is your description')
 
 args = parser.parse_args()
 
@@ -35,7 +35,7 @@ def motivate_image(image, motivation, motivation_size, description, description_
 
     background_image = Image.new('RGB', background_image_size, 'black')
 
-    # Center our text
+    # Figure out where to center our text
     motivation_left_buffer = (background_image_width / 2) - (motivation_size[0] / 2)
     description_left_buffer = (background_image_width / 2) - (description_size[0] / 2)
 
