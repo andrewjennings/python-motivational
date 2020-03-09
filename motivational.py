@@ -10,10 +10,11 @@ parser.add_argument('--motivation', '-m', dest='motivation', default='Awesome', 
 parser.add_argument('--motivation-size', '-ms', dest='motivation_size', type=int, default=50, help='How many pixels tall is your motivational word')
 parser.add_argument('--description', '-d', dest='description', default='Yeah, I totally am', help='Describe your motivations')
 parser.add_argument('--description-size', '-ds', dest='description_size', type=int, default=30, help='How many pixels tall is your description')
+parser.add_argument('--output', '-o', dest='output', help='Where to save your motivational image')
 
 args = parser.parse_args()
 
-def motivate_image(image, motivation, motivation_size, description, description_size):
+def motivate_image(image, motivation, motivation_size, description, description_size, output):
     border_size = 35
     text_padding = 15
 
@@ -59,7 +60,14 @@ def motivate_image(image, motivation, motivation_size, description, description_
     background_image.paste(bordered_image, (0, 0))
 
     # Save or show your image
-    background_image.show()
+    if output:
+        try:
+            background_image.save(output)
+        except:
+            print("Sorry, couldn't save your image. Check to make sure the output path is accessible")
+            background_image.show()
+    else:
+        background_image.show()
 
 if __name__ == '__main__':
-    motivate_image(args.image, args.motivation, args.motivation_size, args.description, args.description_size)
+    motivate_image(args.image, args.motivation, args.motivation_size, args.description, args.description_size, args.output)
